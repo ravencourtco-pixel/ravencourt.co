@@ -7,14 +7,14 @@
 - `index.html` — целата страница (nav, hero, услуги, ценовник, контакт)
 - `assets/favicon.svg` — favicon (RC monogram)
 - `robots.txt`, `sitemap.xml` — за SEO/пребарувачи
-- `CNAME` — го содржи `ravencourt.co`, потребен за GitHub Pages да го препознае custom доменот
+- `CNAME` — го содржи `ravencourts.com`, потребен за GitHub Pages да го препознае custom доменот
 
 ## Како да се објави (GitHub Pages)
 
 1. Ги качуваш сите фајлови и папки во root-от на овој repo (задржи ја истата структура на папки).
 2. **Settings → Pages** → Source: `Deploy from a branch` → Branch: `main`, папка `/ (root)` → Save.
-3. Полето "Custom domain" под Pages ќе го препознае `ravencourt.co` од CNAME фајлот автоматски — само провери дека стои таму, ако не, внеси го рачно.
-4. Во GoDaddy DNS за `ravencourt.co` додади:
+3. Полето "Custom domain" под Pages ќе го препознае `ravencourts.com` од CNAME фајлот автоматски — само провери дека стои таму, ако не, внеси го рачно.
+4. Во GoDaddy DNS за `ravencourts.com` додади:
    - 4× A record за `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - 1× CNAME record: `www` → `ravencourtco-pixel.github.io`
 
