@@ -143,18 +143,21 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     min-height: 48px;
     padding: 14px clamp(20px, 3vw, 30px);
     border-radius: 999px;
     font-size: clamp(13px, 1.5vw, 14px);
     font-weight: 700;
     text-align: center;
-    transition: opacity 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+    transition: opacity 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   }
+  .btn:active { transform: translateY(0); }
+  .btn-icon { width: 16px; height: 16px; flex-shrink: 0; }
   .btn--primary { background: var(--gold); color: var(--bg); }
-  .btn--primary:hover { opacity: 0.88; }
+  .btn--primary:hover { opacity: 0.92; transform: translateY(-3px); box-shadow: 0 14px 28px -12px rgba(217, 189, 138, 0.55); }
   .btn--ghost { border: 1px solid var(--line-strong); color: var(--text); font-weight: 600; }
-  .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .btn--ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); box-shadow: 0 14px 28px -16px rgba(0, 0, 0, 0.5); }
   .btn--block { display: flex; width: 100%; }
 
   .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -197,13 +200,27 @@
   /* the in-menu CTA belongs to the mobile dropdown only */
   .nav-links .nav-links-cta { display: none; }
   .nav-links a {
+    position: relative;
     color: #c9c3b8;
     font-size: 14px;
     font-weight: 500;
     padding-block: 6px;
     transition: color 0.18s ease;
   }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.22s ease;
+  }
   .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); }
 
   .nav-cta {
     display: inline-flex;
@@ -216,9 +233,9 @@
     font-size: 13px;
     font-weight: 600;
     white-space: nowrap;
-    transition: border-color 0.18s ease, color 0.18s ease;
+    transition: border-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .nav-cta:hover { border-color: var(--gold); color: var(--gold); }
+  .nav-cta:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 22px -14px rgba(217, 189, 138, 0.6); }
 
   .nav-toggle {
     display: none;
@@ -231,7 +248,9 @@
     color: var(--text);
     cursor: pointer;
     padding: 0;
+    transition: border-color 0.18s ease, color 0.18s ease;
   }
+  .nav-toggle:hover { border-color: var(--gold); color: var(--gold); }
   .nav-toggle span {
     display: block;
     width: 18px;
@@ -359,20 +378,57 @@
 
   .footer {
     padding-inline: var(--pad-x);
-    padding-top: clamp(32px, 4vw, 40px);
-    padding-bottom: calc(clamp(40px, 5vw, 56px) + env(safe-area-inset-bottom));
+    padding-top: clamp(48px, 6vw, 72px);
+    padding-bottom: calc(clamp(28px, 4vw, 40px) + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
   }
   .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+    padding-bottom: clamp(32px, 5vw, 48px);
   }
-  .footer-tag { font-size: 12px; color: #6e6862; margin-top: 3px; max-width: 46ch; line-height: 1.5; }
-  .footer-links { display: flex; flex-wrap: wrap; gap: clamp(20px, 5vw, 64px); }
-  .footer-links a { color: var(--muted-2); font-size: 13px; padding-block: 6px; transition: color 0.18s ease; }
+  .footer-brand .brand { margin-bottom: 16px; }
+  .footer-tag { font-size: 13px; color: #6e6862; max-width: 42ch; line-height: 1.6; }
+  .footer-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 16px;
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a { color: var(--muted-2); font-size: 13.5px; padding-block: 2px; transition: color 0.18s ease; }
   .footer-links a:hover { color: var(--gold); }
+  .footer-social { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .social-row { display: flex; gap: 10px; }
+  .social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: grid;
+    place-items: center;
+    color: var(--text-soft);
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .social-icon svg { width: 18px; height: 18px; }
+  .social-icon:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(217, 189, 138, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 22px -14px rgba(217, 189, 138, 0.6);
+  }
+  .footer-email { color: var(--muted-2); font-size: 13.5px; transition: color 0.18s ease; }
+  .footer-email:hover { color: var(--gold); }
+  .footer-bottom {
+    padding-top: clamp(20px, 3vw, 28px);
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: #55504b;
+  }
 
   .end-space { height: clamp(80px, 18vw, 320px); }
 
@@ -390,6 +446,8 @@
     .pricing-grid { grid-template-columns: 1fr; }
     .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .brand-sub { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
   }
 
   /* ---------- mobile nav breakpoint ---------- */
@@ -437,8 +495,8 @@
     .btn-row { gap: 12px; }
     .btn { width: 100%; }
     .hero .btn-row .btn { flex: 1 1 100%; }
-    .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .footer-links { gap: 20px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-brand { grid-column: auto; }
     .price-label { padding-right: 96px; }
   }
 
@@ -711,7 +769,14 @@
           <p class="body">Contact Ravencourt directly for premium website, branding and social inquiries.</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="mailto:ravencourt.co@gmail.com">ravencourt.co@gmail.com</a>
-            <a class="btn btn--ghost" href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn btn--ghost" href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+              Instagram
+            </a>
           </div>
         </div>
       </div>
@@ -722,14 +787,47 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <div>
-        <p class="brand-name">Ravencourt</p>
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="Ravencourt home">
+          <span class="brand-mark" aria-hidden="true">RC</span>
+          <span class="brand-text">
+            <span class="brand-name">Ravencourt</span>
+          </span>
+        </a>
         <p class="footer-tag">Premium websites, branding and social presence for brands that sell trust, taste, and quality.</p>
       </div>
-      <nav class="footer-links" aria-label="Social">
-        <a href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:ravencourt.co@gmail.com">ravencourt.co@gmail.com</a>
+
+      <nav class="footer-links" aria-label="Site">
+        <p class="footer-heading">Explore</p>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
       </nav>
+
+      <div class="footer-social">
+        <p class="footer-heading">Connect</p>
+        <div class="social-row">
+          <a class="social-icon" href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener" aria-label="Ravencourt on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a class="social-icon" href="mailto:ravencourt.co@gmail.com" aria-label="Email Ravencourt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="M3 7l9 6 9-6"/>
+            </svg>
+          </a>
+        </div>
+        <a class="footer-email" href="mailto:ravencourt.co@gmail.com">ravencourt.co@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ravencourt. All rights reserved.</p>
     </div>
   </footer>
 
