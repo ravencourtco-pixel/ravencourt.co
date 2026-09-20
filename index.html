@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ravencourt.co — Websites, Branding &amp; Digital Growth</title>
-<meta name="description" content="Ravencourt builds polished websites, identity systems and social presence for brands that need stronger visual authority and a more elevated first impression.">
+<title>Ravencourts — Websites, Branding &amp; Digital Growth</title>
+<meta name="description" content="Ravencourts builds polished websites, identity systems and social presence for brands that need stronger visual authority and a more elevated first impression.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMzIiIGZpbGw9IiMxMDEwMTIiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIyNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDliZDhhIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDx0ZXh0IHg9IjMyIiB5PSI0MCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsICdUaW1lcyBOZXcgUm9tYW4nLCBzZXJpZiIgZm9udC1zaXplPSIyMiIgZmlsbD0iI2Q5YmQ4YSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UkM8L3RleHQ+Cjwvc3ZnPgo=">
-<meta property="og:title" content="Ravencourt.co — Websites, Branding &amp; Digital Growth">
-<meta property="og:description" content="Ravencourt builds polished websites, identity systems and social presence for brands that need stronger visual authority and a more elevated first impression.">
+<meta property="og:title" content="Ravencourts — Websites, Branding &amp; Digital Growth">
+<meta property="og:description" content="Ravencourts builds polished websites, identity systems and social presence for brands that need stronger visual authority and a more elevated first impression.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ravencourts.com/">
 <meta name="theme-color" content="#101012">
@@ -163,6 +163,10 @@
   .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
 
   /* ---------- nav ---------- */
+  @keyframes navDropIn {
+    from { opacity: 0; transform: translateY(-14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   .nav {
     position: sticky;
     top: 0;
@@ -173,6 +177,7 @@
     border-bottom: 1px solid var(--line);
     padding-inline: var(--pad-x);
     padding-top: env(safe-area-inset-top);
+    animation: navDropIn 0.6s ease both;
   }
   .nav-inner {
     display: flex;
@@ -191,9 +196,16 @@
     font-size: 15px;
     color: var(--gold);
     flex-shrink: 0;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .brand:hover .brand-mark {
+    transform: rotate(-8deg) scale(1.08);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(217, 189, 138, 0.12);
   }
   .brand-text { display: flex; flex-direction: column; }
-  .brand-name { display: block; font-weight: 700; font-size: 15px; color: var(--text); line-height: 1.25; }
+  .brand-name { display: block; font-weight: 700; font-size: 15px; color: var(--text); line-height: 1.25; transition: color 0.25s ease; }
+  .brand:hover .brand-name { color: var(--gold); }
   .brand-sub { display: block; font-size: 11px; color: var(--dim); line-height: 1.3; }
 
   .nav-links { display: flex; align-items: center; gap: clamp(18px, 2.6vw, 36px); }
@@ -519,10 +531,10 @@
   <!-- NAV -->
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Ravencourt home">
+      <a class="brand" href="#top" aria-label="Ravencourts home">
         <span class="brand-mark" aria-hidden="true">RC</span>
         <span class="brand-text">
-          <span class="brand-name">Ravencourt</span>
+          <span class="brand-name">Ravencourts</span>
           <span class="brand-sub">Creative &amp; Marketing Studio</span>
         </span>
       </a>
@@ -550,7 +562,7 @@
       <div class="inner">
         <p class="eyebrow eyebrow--gold hero-eyebrow">Websites, Branding &amp; Digital Growth</p>
         <h1 class="h1">We design brand systems that make ambitious businesses feel unmistakably premium.</h1>
-        <p class="lead">Ravencourt builds polished websites, identity systems and social presence for brands that need stronger visual authority, sharper messaging, and a more elevated first impression.</p>
+        <p class="lead">Ravencourts builds polished websites, identity systems and social presence for brands that need stronger visual authority, sharper messaging, and a more elevated first impression.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#pricing">View Signature Packages</a>
           <a class="btn btn--ghost" href="#services">Explore Capabilities</a>
@@ -639,7 +651,7 @@
     <!-- WHY RAVENCOURT -->
     <section class="section section--alt">
       <div class="inner">
-        <p class="eyebrow">Why Ravencourt</p>
+        <p class="eyebrow">Why Ravencourts</p>
         <h2 class="h2 h2--sm" style="margin: 18px 0 20px; max-width: 30ch;">Clients do not respond to generic websites. They respond to taste, control, and credibility.</h2>
         <p class="body measure" style="margin-bottom: clamp(32px, 5vw, 48px);">We combine premium visual direction with clean development so the presence feels expensive, modern, and commercially grounded. The goal is not decoration — it's stronger brand perception and better-quality inquiries.</p>
         <div class="grid grid--3">
@@ -765,8 +777,8 @@
       <div class="inner">
         <div class="card contact-card">
           <p class="eyebrow" style="margin-bottom: 16px;">Start the Conversation</p>
-          <h2 class="h2 h2--xs">For brands that need a more elevated digital presence, Ravencourt is available for selective engagements.</h2>
-          <p class="body">Contact Ravencourt directly for premium website, branding and social inquiries.</p>
+          <h2 class="h2 h2--xs">For brands that need a more elevated digital presence, Ravencourts is available for selective engagements.</h2>
+          <p class="body">Contact Ravencourts directly for premium website, branding and social inquiries.</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="mailto:ravencourt.co@gmail.com">ravencourt.co@gmail.com</a>
             <a class="btn btn--ghost" href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener">
@@ -788,10 +800,10 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a class="brand" href="#top" aria-label="Ravencourt home">
+        <a class="brand" href="#top" aria-label="Ravencourts home">
           <span class="brand-mark" aria-hidden="true">RC</span>
           <span class="brand-text">
-            <span class="brand-name">Ravencourt</span>
+            <span class="brand-name">Ravencourts</span>
           </span>
         </a>
         <p class="footer-tag">Premium websites, branding and social presence for brands that sell trust, taste, and quality.</p>
@@ -808,14 +820,14 @@
       <div class="footer-social">
         <p class="footer-heading">Connect</p>
         <div class="social-row">
-          <a class="social-icon" href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener" aria-label="Ravencourt on Instagram">
+          <a class="social-icon" href="https://instagram.com/ravencourt.co" target="_blank" rel="noopener" aria-label="Ravencourts on Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="5"/>
               <circle cx="12" cy="12" r="4"/>
               <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
             </svg>
           </a>
-          <a class="social-icon" href="mailto:ravencourt.co@gmail.com" aria-label="Email Ravencourt">
+          <a class="social-icon" href="mailto:ravencourt.co@gmail.com" aria-label="Email Ravencourts">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="5" width="18" height="14" rx="2"/>
               <path d="M3 7l9 6 9-6"/>
@@ -827,7 +839,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Ravencourt. All rights reserved.</p>
+      <p>&copy; 2026 Ravencourts. All rights reserved.</p>
     </div>
   </footer>
 
